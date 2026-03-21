@@ -1,4 +1,4 @@
-import Realm from "realm";
+import Realm from 'realm';
 
 export class Beatmap extends Realm.Object {
   ID!: string; // UUID
@@ -26,33 +26,33 @@ export class Beatmap extends Realm.Object {
   OnlineID!: number; // int
 
   static schema: Realm.ObjectSchema = {
-    name: "Beatmap",
+    name: 'Beatmap',
     properties: {
-      ID: "uuid",
-      DifficultyName: "string?",
-      Ruleset: "Ruleset",
-      Difficulty: "BeatmapDifficulty",
-      Metadata: "BeatmapMetadata",
-      BeatmapSet: "BeatmapSet",
-      UserSettings: "BeatmapUserSettings",
-      Status: "int",
-      Length: "double",
-      BPM: "double",
-      Hash: "string?",
-      StarRating: "double",
-      MD5Hash: "string?",
-      OnlineMD5Hash: "string?",
-      LastLocalUpdate: "date?",
-      LastOnlineUpdate: "date?",
-      EditorTimestamp: "double?",
-      EndTimeObjectCount: "int",
-      TotalObjectCount: "int",
-      Hidden: "bool",
-      LastPlayed: "date?",
-      BeatDivisor: "int",
-      OnlineID: { type: "int", indexed: true },
+      ID: 'uuid',
+      DifficultyName: 'string?',
+      Ruleset: 'Ruleset',
+      Difficulty: 'BeatmapDifficulty',
+      Metadata: 'BeatmapMetadata',
+      BeatmapSet: 'BeatmapSet',
+      UserSettings: 'BeatmapUserSettings',
+      Status: 'int',
+      Length: 'double',
+      BPM: 'double',
+      Hash: 'string?',
+      StarRating: 'double',
+      MD5Hash: 'string?',
+      OnlineMD5Hash: 'string?',
+      LastLocalUpdate: 'date?',
+      LastOnlineUpdate: 'date?',
+      EditorTimestamp: 'double?',
+      EndTimeObjectCount: 'int',
+      TotalObjectCount: 'int',
+      Hidden: 'bool',
+      LastPlayed: 'date?',
+      BeatDivisor: 'int',
+      OnlineID: { type: 'int', indexed: true },
     },
-    primaryKey: "ID",
+    primaryKey: 'ID',
   };
 }
 
@@ -60,10 +60,10 @@ export class BeatmapUserSettings extends Realm.Object {
   Offset!: number; // double
 
   static schema: Realm.ObjectSchema = {
-    name: "BeatmapUserSettings",
+    name: 'BeatmapUserSettings',
     embedded: true,
     properties: {
-      Offset: "double",
+      Offset: 'double',
     },
   };
 }
@@ -77,15 +77,15 @@ export class BeatmapDifficulty extends Realm.Object {
   SliderTickRate!: number; // double
 
   static schema: Realm.ObjectSchema = {
-    name: "BeatmapDifficulty",
+    name: 'BeatmapDifficulty',
     embedded: true,
     properties: {
-      DrainRate: "float",
-      CircleSize: "float",
-      OverallDifficulty: "float",
-      ApproachRate: "float",
-      SliderMultiplier: "double",
-      SliderTickRate: "double",
+      DrainRate: 'float',
+      CircleSize: 'float',
+      OverallDifficulty: 'float',
+      ApproachRate: 'float',
+      SliderMultiplier: 'double',
+      SliderTickRate: 'double',
     },
   };
 }
@@ -104,21 +104,21 @@ export class BeatmapMetadata extends Realm.Object {
   UserTags?: string[];
 
   static schema: Realm.ObjectSchema = {
-    name: "BeatmapMetadata",
+    name: 'BeatmapMetadata',
     properties: {
-      Title: "string?",
-      TitleUnicode: "string?",
-      Artist: "string?",
-      ArtistUnicode: "string?",
-      Source: "string?",
-      Tags: "string?",
-      PreviewTime: "int",
-      AudioFile: "string?",
-      BackgroundFile: "string?",
-      Author: "RealmUser",
+      Title: 'string?',
+      TitleUnicode: 'string?',
+      Artist: 'string?',
+      ArtistUnicode: 'string?',
+      Source: 'string?',
+      Tags: 'string?',
+      PreviewTime: 'int',
+      AudioFile: 'string?',
+      BackgroundFile: 'string?',
+      Author: 'RealmUser',
       UserTags: {
-        type: "list",
-        objectType: "string",
+        type: 'list',
+        objectType: 'string',
         optional: true,
       },
     },
@@ -139,20 +139,20 @@ export class BeatmapSet extends Realm.Object {
   Status!: number; // int
 
   static schema: Realm.ObjectSchema = {
-    name: "BeatmapSet",
-    primaryKey: "ID",
+    name: 'BeatmapSet',
+    primaryKey: 'ID',
     properties: {
-      ID: "uuid",
-      DateAdded: "date",
-      DateSubmitted: "date?",
-      DateRanked: "date?",
-      Beatmaps: "Beatmap[]",
-      Files: "RealmNamedFileUsage[]",
-      DeletePending: "bool",
-      Hash: "string?",
-      Protected: "bool",
-      OnlineID: { type: "int", indexed: true },
-      Status: "int",
+      ID: 'uuid',
+      DateAdded: 'date',
+      DateSubmitted: 'date?',
+      DateRanked: 'date?',
+      Beatmaps: 'Beatmap[]',
+      Files: 'RealmNamedFileUsage[]',
+      DeletePending: 'bool',
+      Hash: 'string?',
+      Protected: 'bool',
+      OnlineID: { type: 'int', indexed: true },
+      Status: 'int',
     },
   };
 }
@@ -161,10 +161,10 @@ export class File extends Realm.Object<File> {
   Hash?: string;
 
   static schema: Realm.ObjectSchema = {
-    name: "File",
-    primaryKey: "Hash",
+    name: 'File',
+    primaryKey: 'Hash',
     properties: {
-      Hash: "string?",
+      Hash: 'string?',
     },
   };
 }
@@ -177,14 +177,14 @@ export class KeyBinding extends Realm.Object {
   RulesetName?: string; // string
 
   static schema: Realm.ObjectSchema = {
-    name: "KeyBinding",
-    primaryKey: "ID",
+    name: 'KeyBinding',
+    primaryKey: 'ID',
     properties: {
-      ID: "uuid",
-      Variant: "int?",
-      Action: "int",
-      KeyCombination: "string?",
-      RulesetName: "string?",
+      ID: 'uuid',
+      Variant: 'int?',
+      Action: 'int',
+      KeyCombination: 'string?',
+      RulesetName: 'string?',
     },
   };
 }
@@ -194,11 +194,11 @@ export class RealmNamedFileUsage extends Realm.Object {
   Filename?: string;
 
   static schema: Realm.ObjectSchema = {
-    name: "RealmNamedFileUsage",
+    name: 'RealmNamedFileUsage',
     embedded: true,
     properties: {
-      File: "File",
-      Filename: "string?",
+      File: 'File',
+      Filename: 'string?',
     },
   };
 }
@@ -209,84 +209,83 @@ export class RealmUser extends Realm.Object {
   Username?: string;
 
   static schema: Realm.ObjectSchema = {
-    name: "RealmUser",
+    name: 'RealmUser',
     embedded: true,
     properties: {
-      CountryCode: "string?",
-      OnlineID: "int",
-      Username: "string?",
+      CountryCode: 'string?',
+      OnlineID: 'int',
+      Username: 'string?',
     },
   };
 }
 
 export class Ruleset extends Realm.Object {
   static schema: Realm.ObjectSchema = {
-    name: "Ruleset",
-    primaryKey: "ShortName",
+    name: 'Ruleset',
+    primaryKey: 'ShortName',
     properties: {
-      LastAppliedDifficultyVersion: "int",
-      ShortName: "string?",
-      Name: "string?",
-      InstantiationInfo: "string?",
-      Available: "bool",
-      OnlineID: { type: "int", indexed: true },
+      LastAppliedDifficultyVersion: 'int',
+      ShortName: 'string?',
+      Name: 'string?',
+      InstantiationInfo: 'string?',
+      Available: 'bool',
+      OnlineID: { type: 'int', indexed: true },
     },
   };
 }
 
 export class RulesetSetting extends Realm.Object {
   static schema: Realm.ObjectSchema = {
-    name: "RulesetSetting",
+    name: 'RulesetSetting',
     properties: {
-      Variant: { type: "int", indexed: true },
-      Key: "string",
-      Value: "string",
-      RulesetName: { type: "string", indexed: true },
+      Variant: { type: 'int', indexed: true },
+      Key: 'string',
+      Value: 'string',
+      RulesetName: { type: 'string', indexed: true },
     },
   };
 }
 
 export class Score extends Realm.Object {
   static schema: Realm.ObjectSchema = {
-    name: "Score",
-    primaryKey: "ID",
+    name: 'Score',
+    primaryKey: 'ID',
     properties: {
-      ID: "uuid",
-      BeatmapInfo: "Beatmap",
-      Ruleset: "Ruleset",
-      Files: "RealmNamedFileUsage[]",
-      Hash: "string?",
-      DeletePending: "bool",
-      TotalScore: "int",
-      MaxCombo: "int",
-      Accuracy: "double",
-      HasReplay: "bool",
-      Date: "date",
-      PP: "double?",
-      OnlineID: { type: "int", indexed: true },
-      User: "RealmUser",
-      Mods: "string?",
-      Statistics: "string?",
-      Rank: "int",
-      Combo: "int",
+      ID: 'uuid',
+      BeatmapInfo: 'Beatmap',
+      Ruleset: 'Ruleset',
+      Files: 'RealmNamedFileUsage[]',
+      Hash: 'string?',
+      DeletePending: 'bool',
+      TotalScore: 'int',
+      MaxCombo: 'int',
+      Accuracy: 'double',
+      HasReplay: 'bool',
+      Date: 'date',
+      PP: 'double?',
+      OnlineID: { type: 'int', indexed: true },
+      User: 'RealmUser',
+      Mods: 'string?',
+      Statistics: 'string?',
+      Rank: 'int',
+      Combo: 'int',
     },
   };
 }
 
 export class Skin extends Realm.Object {
   static schema: Realm.ObjectSchema = {
-    name: "Skin",
-    primaryKey: "ID",
+    name: 'Skin',
+    primaryKey: 'ID',
     properties: {
-      ID: "uuid",
-      Name: "string?",
-      Creator: "string?",
-      InstantiationInfo: "string?",
-      Hash: "string?",
-      Protected: "bool",
-      Files: "RealmNamedFileUsage[]",
-      DeletePending: "bool",
+      ID: 'uuid',
+      Name: 'string?',
+      Creator: 'string?',
+      InstantiationInfo: 'string?',
+      Hash: 'string?',
+      Protected: 'bool',
+      Files: 'RealmNamedFileUsage[]',
+      DeletePending: 'bool',
     },
   };
 }
-

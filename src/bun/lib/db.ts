@@ -9,8 +9,8 @@ import {
   RealmNamedFileUsage,
   RealmUser,
   BeatmapUserSettings,
-} from "./scheme";
-import Realm from "realm";
+} from './scheme';
+import Realm from 'realm';
 
 export class LazerDatabase {
   private _connection: Realm | null;
@@ -49,4 +49,3 @@ export class LazerDatabase {
     return this._connection;
   }
 }
-

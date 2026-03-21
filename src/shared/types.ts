@@ -1,16 +1,15 @@
-import { RPCSchema } from "electrobun"
+import { RPCSchema } from 'electrobun';
 
 export type WebviewRPCType = {
   bun: RPCSchema<{
     requests: {
       getAllBeatmaps: {
-        params: {},
+        params: {};
         response: {
-          beatmaps: string
-        }
-      }
-    }
+          beatmaps: string;
+        };
+      };
+    };
   }>;
-  webview: RPCSchema<{
-  }>;
-}
+  webview: RPCSchema<{}>;
+};

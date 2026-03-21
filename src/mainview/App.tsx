@@ -1,8 +1,5 @@
 export const App = () => {
-  return (
-    <div className="min-h-screen">
-    </div>
-  );
-}
+  return <div className="min-h-screen"></div>;
+};
 
 export default App;

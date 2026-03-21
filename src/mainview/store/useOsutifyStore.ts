@@ -1,6 +1,6 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-type RepeatMode = "none" | "all_tracks" | "one_track" | "one_track_stop"
+type RepeatMode = 'none' | 'all_tracks' | 'one_track' | 'one_track_stop';
 
 interface OsutifyStore {
   isPlaying: boolean;
@@ -11,8 +11,8 @@ interface OsutifyStore {
 export const useOsutifyStore = create<OsutifyStore>((set) => ({
   isPlaying: false,
   isShuffle: false,
-  repeatMode: "none",
+  repeatMode: 'none',
   togglePlaying: () => set((state) => ({ isPlaying: !state.isPlaying })),
   toggleShuffle: () => set((state) => ({ isShuffle: !state.isShuffle })),
-  setRepeatMode: (mode: RepeatMode) => set((_) => ({ repeatMode: mode }),
+  setRepeatMode: (mode: RepeatMode) => set((_) => ({ repeatMode: mode })),
 }));

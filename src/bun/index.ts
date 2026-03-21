@@ -1,5 +1,5 @@
-import { BrowserView, BrowserWindow, Updater } from "electrobun/bun";
-import { type WebviewRPCType } from "../shared/types";
+import { BrowserView, BrowserWindow, Updater } from 'electrobun/bun';
+import { type WebviewRPCType } from '../shared/types';
 
 const DEV_SERVER_PORT = 5173;
 const DEV_SERVER_URL = `http://localhost:${DEV_SERVER_PORT}`;
@@ -7,9 +7,9 @@ const DEV_SERVER_URL = `http://localhost:${DEV_SERVER_PORT}`;
 // Check if Vite dev server is running for HMR
 async function getMainViewUrl(): Promise<string> {
   const channel = await Updater.localInfo.channel();
-  if (channel === "dev") {
+  if (channel === 'dev') {
     try {
-      await fetch(DEV_SERVER_URL, { method: "HEAD" });
+      await fetch(DEV_SERVER_URL, { method: 'HEAD' });
       console.log(`HMR enabled: Using Vite dev server at ${DEV_SERVER_URL}`);
       return DEV_SERVER_URL;
     } catch {
@@ -18,7 +18,7 @@ async function getMainViewUrl(): Promise<string> {
       );
     }
   }
-  return "views://mainview/index.html";
+  return 'views://mainview/index.html';
 }
 
 const webviewRPC = BrowserView.defineRPC<WebviewRPCType>({
@@ -26,17 +26,17 @@ const webviewRPC = BrowserView.defineRPC<WebviewRPCType>({
   handlers: {
     requests: {
       getAllBeatmaps: () => {
-        return { beatmaps: "none" };
-      }
+        return { beatmaps: 'none' };
+      },
     },
-  }
+  },
 });
 
 // Create the main application window
 const url = await getMainViewUrl();
 
-const mainWindow = new BrowserWindow({
-  title: "osutify!",
+const _mainWindow = new BrowserWindow({
+  title: 'osutify!',
   url,
   frame: {
     width: 900,
@@ -46,4 +46,3 @@ const mainWindow = new BrowserWindow({
   },
   rpc: webviewRPC,
 });
-

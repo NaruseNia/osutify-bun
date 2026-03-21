@@ -1,9 +1,8 @@
-import { Electroview } from "electrobun/view";
-import { WebviewRPCType } from "../shared/types";
+import { Electroview } from 'electrobun/view';
+import { WebviewRPCType } from '../shared/types';
 
 const rpc = Electroview.defineRPC<WebviewRPCType>({
-  handlers: {
-  }
+  handlers: {},
 });
 
 export const electroview = new Electroview({ rpc });
