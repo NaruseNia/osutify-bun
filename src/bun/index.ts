@@ -1,4 +1,5 @@
-import { BrowserWindow, Updater } from "electrobun/bun";
+import { BrowserView, BrowserWindow, Updater } from "electrobun/bun";
+import { type WebviewRPCType } from "../shared/types";
 
 const DEV_SERVER_PORT = 5173;
 const DEV_SERVER_URL = `http://localhost:${DEV_SERVER_PORT}`;
@@ -20,6 +21,17 @@ async function getMainViewUrl(): Promise<string> {
   return "views://mainview/index.html";
 }
 
+const webviewRPC = BrowserView.defineRPC<WebviewRPCType>({
+  maxRequestTime: 5000,
+  handlers: {
+    requests: {
+      getAllBeatmaps: () => {
+        return { beatmaps: "none" };
+      }
+    },
+  }
+});
+
 // Create the main application window
 const url = await getMainViewUrl();
 
@@ -32,4 +44,6 @@ const mainWindow = new BrowserWindow({
     x: 200,
     y: 200,
   },
+  rpc: webviewRPC,
 });
+
